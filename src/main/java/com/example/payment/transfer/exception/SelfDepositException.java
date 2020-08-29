@@ -1,0 +1,23 @@
+package com.example.payment.transfer.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class SelfDepositException extends RuntimeException {
+    private static final long serialVersionUID = -828126129108947213L;
+
+    public SelfDepositException(String message)
+    {
+        super(message);
+    }
+
+    public SelfDepositException(String message, Throwable cause)
+    {
+        super(message, cause);
+    }
+
+    public SelfDepositException() {
+
+    }
+}
