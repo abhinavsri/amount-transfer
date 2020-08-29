@@ -20,8 +20,40 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<ErrorDetail> handleUserNotFoundException(UserNotFoundException ex,
                                                                                                         WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage());
-        return new ResponseEntity<>(errorDetail, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
 
     }
 
+    @ExceptionHandler(AmountInWalletExceededException.class)
+    public final ResponseEntity<ErrorDetail> handleAmountInWalletExceededException(AmountInWalletExceededException ex,
+                                                                                                        WebRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage());
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
+
+    }
+
+    @ExceptionHandler(SelfDepositException.class)
+    public final ResponseEntity<ErrorDetail> handleSelfDepositException(SelfDepositException ex,
+                                                                                                        WebRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage());
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
+
+    }
+
+    @ExceptionHandler(TransferException.class)
+    public final ResponseEntity<ErrorDetail> handleTransferException(TransferException ex,
+                                                                         WebRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage());
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
+
+    }
+
+
+    @ExceptionHandler(WalletNotFoundException.class)
+    public final ResponseEntity<ErrorDetail> handleWalletNotFoundException(WalletNotFoundException ex,
+                                                                     WebRequest request) {
+        ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage());
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
+
+    }
 }
